@@ -124,13 +124,13 @@
 
         .btn-secondary {
             background: transparent;
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
+            color: white;
+            border: 2px solid white;
         }
 
         .btn-secondary:hover {
-            background: var(--color-primary);
-            color: white;
+            background: white;
+            color: var(--color-primary);
         }
 
         .btn-large {
@@ -138,151 +138,109 @@
             font-size: 1.125rem;
         }
 
-        /* Hero Section */
+        /* Hero Section - Starlink Style */
         .hero {
             margin-top: 80px;
-            padding: 4rem 2rem 6rem;
-            background: linear-gradient(135deg, #f9fafb 0%, #e0f7f9 100%);
+            height: 100vh;
+            min-height: 700px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero::before {
-            content: '';
+        .hero-background {
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(27, 156, 167, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
 
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            position: relative;
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
             z-index: 1;
         }
 
-        .hero-content-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .hero-container {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            padding: 2rem;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
+            font-size: 4rem;
+            font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            color: var(--color-gray-900);
-            letter-spacing: -2px;
-            text-align: center;
+            color: white;
+            letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
         .hero-content h1 .highlight {
-            color: var(--color-primary);
-            position: relative;
-            display: inline-block;
+            color: var(--color-primary-light);
         }
 
         .hero-content p {
-            font-size: 1.25rem;
-            color: var(--color-gray-600);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            text-align: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 4rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-gray-200);
-            justify-content: center;
-            flex-wrap: wrap;
-            width: 100%;
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
         }
 
-        .stat {
-            text-align: center;
-            min-width: 150px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--color-primary);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--color-gray-600);
-            margin-top: 0.5rem;
-        }
-
-        .hero-visual {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 4rem;
-            gap: 2rem;
-        }
-
-        .hero-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            animation: float 6s ease-in-out infinite;
-            max-width: 400px;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
-        }
-
-        .agent-preview {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .agent-preview h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .agent-metrics {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .metric {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
         }
 
         /* Difference Section */
@@ -740,16 +698,16 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
+            .hero {
+                min-height: 600px;
+            }
+
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
-            .hero-visual {
-                margin-top: 3rem;
-            }
-
-            .hero-stats {
-                gap: 2rem;
+            .hero-content p {
+                font-size: 1.25rem;
             }
 
             .features-grid {
@@ -770,21 +728,28 @@
                 display: none;
             }
 
+            .hero {
+                min-height: 500px;
+                margin-top: 70px;
+            }
+
             .hero-content h1 {
                 font-size: 2rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.125rem;
+                margin-bottom: 2rem;
             }
 
             .hero-cta {
                 flex-direction: column;
+                gap: 1rem;
             }
 
-            .hero-stats {
-                flex-direction: column;
-                gap: 1.5rem;
+            .hero-scroll-indicator {
+                bottom: 2rem;
+                font-size: 1.5rem;
             }
 
             .section-header h2 {
@@ -845,65 +810,41 @@
                 <a href="#features" class="nav-link">Características</a>
                 <a href="#casos-uso" class="nav-link">Casos de Uso</a>
                 <a href="#testimonios" class="nav-link">Testimonios</a>
-                <a href="#demo" class="btn btn-primary">Solicitar Demo</a>
+                <a href="#demo" class="btn btn-primary">Prueba Gratuita</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Background Image -->
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+                 alt="AI Technology Background">
+        </div>
+        
+        <!-- Dark Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Content -->
         <div class="hero-container">
-            <div class="hero-content-wrapper">
-                <div class="hero-content">
-                    <h1>
-                        Colaboradores Digitales que <span class="highlight">Transforman</span> tu Negocio
-                    </h1>
-                    <p class="hero-slogan" style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary); margin-bottom: 1rem; font-style: italic;">
-                        Tu empresa, Tu agente, Tu manera
-                    </p>
-                    <p>
-                        Agentes autónomos que comprenden tu negocio, toman decisiones inteligentes 
-                        y ejecutan tareas complejas de principio a fin. Colaboradores digitales que 
-                        se adaptan, aprenden y evolucionan con cada interacción.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#demo" class="btn btn-primary btn-large">Solicitar Demo</a>
-                        <a href="#casos-uso" class="btn btn-secondary btn-large">Ver Casos de Uso</a>
-                    </div>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">10,000+</div>
-                        <div class="stat-label">Agentes Creados</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">85%</div>
-                        <div class="stat-label">Reducción en Tareas</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Disponibilidad</div>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="hero-card">
-                        <div class="agent-preview">
-                            <h3>🤖 Agente de Ventas</h3>
-                            <p>Automatizando seguimientos y calificación de leads</p>
-                            <div class="agent-metrics">
-                                <div class="metric">📊 +45% conversión</div>
-                                <div class="metric">⚡ 200 leads/día</div>
-                            </div>
-                        </div>
-                        <p style="color: var(--color-gray-600); font-size: 0.875rem;">
-                            Agentes que ejecutan, no solo responden. Conectados a tus sistemas, 
-                            trabajando como un miembro más de tu equipo.
-                        </p>
-                    </div>
+            <div class="hero-content">
+                <h1>
+                    <span class="highlight">Agentes de IA</span><br>para tu Empresa
+                </h1>
+                <p>
+                    Se integran con tus sistemas. Ejecutan tareas completas sin supervisión. Disponibles 24/7.
+                </p>
+                <div class="hero-cta">
+                    <a href="#demo" class="btn btn-primary btn-large">Prueba Gratuita</a>
+                    <a href="#casos-uso" class="btn btn-secondary btn-large">Ver Casos de Uso</a>
                 </div>
             </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll-indicator">
+            ↓
         </div>
     </section>
 
@@ -1159,10 +1100,10 @@
     <!-- CTA Section -->
     <section id="demo" class="cta-section">
         <div class="cta-container">
-            <h2>Descubre el Poder de los Agentes Inteligentes</h2>
+            <h2>Comienza tu Prueba Gratuita</h2>
             <p>
-                Agenda una demostración personalizada y descubre cómo los colaboradores digitales 
-                pueden transformar tu negocio. Nuestro equipo te mostrará casos específicos para tu industria.
+                Experimenta el poder de los agentes inteligentes sin compromiso. 
+                Nuestro equipo te ayudará a configurar tu primer agente.
             </p>
             <form class="cta-form" id="demoForm">
                 <input 
@@ -1174,11 +1115,11 @@
                     id="emailInput"
                 >
                 <button type="submit" class="btn btn-white btn-large">
-                    Solicitar Demostración
+                    Comenzar Prueba Gratuita
                 </button>
             </form>
             <p class="cta-note">
-                ✓ Demo personalizada  ✓ Sin compromiso  ✓ Atención inmediata
+                ✓ Sin tarjeta de crédito  ✓ Configuración guiada  ✓ Soporte incluido
             </p>
         </div>
     </section>
@@ -1260,6 +1201,20 @@
             lastScroll = currentScroll;
         });
 
+        // Hero scroll indicator
+        const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', () => {
+                const difference = document.querySelector('.difference');
+                if (difference) {
+                    difference.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+
         // Form submission - Demo request
         document.getElementById('demoForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1275,10 +1230,10 @@
             container.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">¡Solicitud Recibida!</h3>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">¡Bienvenido a Agentum!</h3>
                     <p style="font-size: 1.125rem; opacity: 0.9;">
                         Gracias por tu interés. Nuestro equipo se pondrá en contacto contigo 
-                        en menos de 24 horas para agendar tu demostración personalizada.
+                        en menos de 24 horas para activar tu prueba gratuita.
                     </p>
                     <p style="margin-top: 1.5rem; font-size: 0.875rem; opacity: 0.8;">
                         Email de contacto: ${email}
@@ -1301,7 +1256,7 @@
                     timestamp: new Date().toISOString(),
                     referrer: document.referrer || 'direct',
                     userAgent: navigator.userAgent,
-                    _subject: 'Nuevo Lead - Agentum Landing'
+                    _subject: 'Nueva Solicitud de Prueba Gratuita - Agentum'
                 })
             })
             .then(response => response.json())
@@ -1316,4 +1271,5 @@
     </script>
 </body>
 </html>
+
 
