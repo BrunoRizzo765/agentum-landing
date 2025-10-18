@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agentum - Crea colaboradores digitales inteligentes que transforman tu negocio. No son chatbots, son agentes de IA que trabajan por ti.">
+    <title>Agentum - Colaboradores Digitales Inteligentes</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1b9ca7;
+            --color-primary-hover: #16828c;
+            --color-primary-light: #22b8c5;
+            --color-background: #FFFFFF;
+            --color-foreground: #111827;
+            --color-gray-50: #F9FAFB;
+            --color-gray-100: #F3F4F6;
+            --color-gray-200: #E5E7EB;
+            --color-gray-300: #D1D5DB;
+            --color-gray-500: #6B7280;
+            --color-gray-600: #4B5563;
+            --color-gray-700: #374151;
+            --color-gray-800: #1F2937;
+            --color-gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--color-foreground);
+            background: var(--color-background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--color-gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--color-gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(27, 156, 167, 0.39);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27, 156, 167, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem 6rem;
+            background: linear-gradient(135deg, #f9fafb 0%, #e0f7f9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(27, 156, 167, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--color-gray-900);
+            letter-spacing: -2px;
+            text-align: center;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--color-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--color-gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-gray-200);
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .stat {
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+            margin-top: 0.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 4rem;
+            gap: 2rem;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+            max-width: 400px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .agent-preview {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .agent-preview h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-metrics {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        /* Difference Section */
+        .difference {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .difference-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(27, 156, 167, 0.1);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-gray-900);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--color-gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--color-gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card.highlighted {
+            border-color: var(--color-primary);
+            background: linear-gradient(135deg, rgba(27, 156, 167, 0.05) 0%, rgba(27, 156, 167, 0.02) 100%);
+            box-shadow: 0 10px 40px rgba(27, 156, 167, 0.1);
+        }
+
+        .comparison-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .icon-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .icon-gray {
+            background: var(--color-gray-200);
+            color: var(--color-gray-600);
+        }
+
+        .comparison-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-list li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--color-gray-700);
+        }
+
+        .comparison-list li::before {
+            content: '✓';
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .comparison-card:not(.highlighted) .comparison-list li::before {
+            content: '×';
+            color: var(--color-gray-400);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: var(--color-gray-50);
+        }
+
+        .features-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--color-gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-primary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--color-gray-600);
+            line-height: 1.7;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .use-cases-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .use-case-card {
+            background: linear-gradient(135deg, var(--color-gray-50) 0%, white 100%);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--color-gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .use-case-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card p {
+            color: var(--color-gray-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .use-case-results {
+            display: flex;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .result {
+            flex: 1;
+        }
+
+        .result-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+
+        .result-label {
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+            margin-top: 0.25rem;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 5rem 2rem;
+            background: var(--color-gray-900);
+            color: white;
+        }
+
+        .social-proof-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .social-proof .section-header h2,
+        .social-proof .section-header p {
+            color: white;
+        }
+
+        .social-proof .section-badge {
+            background: rgba(27, 156, 167, 0.2);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-container h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-container p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .cta-input:focus {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        .btn-white:hover {
+            background: var(--color-gray-100);
+        }
+
+        .cta-note {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-gray-900);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                margin-top: 3rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container h2 {
+                font-size: 2rem;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/agentum-logo.png" alt="Agentum Logo">
+                <span class="logo-text">Agentum</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Características</a>
+                <a href="#casos-uso" class="nav-link">Casos de Uso</a>
+                <a href="#testimonios" class="nav-link">Testimonios</a>
+                <a href="#demo" class="btn btn-primary">Solicitar Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content-wrapper">
+                <div class="hero-content">
+                    <h1>
+                        Colaboradores Digitales que <span class="highlight">Transforman</span> tu Negocio
+                    </h1>
+                    <p class="hero-slogan" style="font-size: 1.5rem; font-weight: 600; color: var(--color-primary); margin-bottom: 1rem; font-style: italic;">
+                        Tu empresa, Tu agente, Tu manera
+                    </p>
+                    <p>
+                        Agentes autónomos que comprenden tu negocio, toman decisiones inteligentes 
+                        y ejecutan tareas complejas de principio a fin. Colaboradores digitales que 
+                        se adaptan, aprenden y evolucionan con cada interacción.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#demo" class="btn btn-primary btn-large">Solicitar Demo</a>
+                        <a href="#casos-uso" class="btn btn-secondary btn-large">Ver Casos de Uso</a>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Agentes Creados</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Reducción en Tareas</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Disponibilidad</div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="agent-preview">
+                            <h3>🤖 Agente de Ventas</h3>
+                            <p>Automatizando seguimientos y calificación de leads</p>
+                            <div class="agent-metrics">
+                                <div class="metric">📊 +45% conversión</div>
+                                <div class="metric">⚡ 200 leads/día</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--color-gray-600); font-size: 0.875rem;">
+                            Agentes que ejecutan, no solo responden. Conectados a tus sistemas, 
+                            trabajando como un miembro más de tu equipo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difference Section -->
+    <section class="difference">
+        <div class="difference-container">
+            <div class="section-header">
+                <span class="section-badge">La Diferencia</span>
+                <h2>Agentes Inteligentes vs. Chatbots Tradicionales</h2>
+                <p>
+                    No te conformes con respuestas automáticas. Obtén colaboradores digitales 
+                    que realmente ejecutan y transforman tu negocio.
+                </p>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>
+                        <span class="icon icon-gray">💬</span>
+                        Chatbots Tradicionales
+                    </h3>
+                    <ul class="comparison-list">
+                        <li>Solo responden preguntas predefinidas</li>
+                        <li>No pueden ejecutar acciones complejas</li>
+                        <li>Requieren programación constante</li>
+                        <li>Funcionan de forma aislada</li>
+                        <li>No aprenden de las interacciones</li>
+                        <li>Experiencia limitada y frustrante</li>
+                    </ul>
+                </div>
+                <div class="comparison-card highlighted">
+                    <h3>
+                        <span class="icon icon-primary">🚀</span>
+                        Agentes de Agentum
+                    </h3>
+                    <ul class="comparison-list">
+                        <li>Ejecutan tareas y procesos completos</li>
+                        <li>Se integran con tus sistemas (CRM, ERP, APIs)</li>
+                        <li>Aprenden y mejoran continuamente</li>
+                        <li>Toman decisiones inteligentes</li>
+                        <li>Trabajan 24/7 sin supervisión</li>
+                        <li>Generan valor real y medible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <span class="section-badge">Capacidades</span>
+                <h2>Todo lo que Necesitas para Crear Agentes Poderosos</h2>
+                <p>
+                    Plataforma completa para diseñar, implementar y gestionar colaboradores digitales 
+                    que realmente trabajan por ti.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Creación Sin Código</h3>
+                    <p>
+                        Diseña agentes inteligentes sin escribir una línea de código. 
+                        Interfaz visual intuitiva para cualquier persona de tu equipo.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Integraciones Nativas</h3>
+                    <p>
+                        Conecta con CRM, bases de datos, APIs, WhatsApp, email y más. 
+                        Tus agentes trabajan con tus herramientas actuales.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>IA Avanzada</h3>
+                    <p>
+                        Modelos de lenguaje de última generación que comprenden contexto, 
+                        toman decisiones y aprenden de cada interacción.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics en Tiempo Real</h3>
+                    <p>
+                        Monitorea rendimiento, conversaciones y KPIs. Optimiza continuamente 
+                        con datos concretos.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Seguridad Empresarial</h3>
+                    <p>
+                        Encriptación end-to-end, cumplimiento GDPR, control de accesos y 
+                        auditoría completa de todas las acciones.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Escalabilidad Ilimitada</h3>
+                    <p>
+                        De 1 a 1,000 agentes. Crece sin límites con infraestructura 
+                        cloud que se adapta a tu demanda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="casos-uso" class="use-cases">
+        <div class="use-cases-container">
+            <div class="section-header">
+                <span class="section-badge">Casos de Uso</span>
+                <h2>Resultados Reales en Diferentes Industrias</h2>
+                <p>
+                    Descubre cómo empresas como la tuya están transformando sus operaciones 
+                    con colaboradores digitales de Agentum.
+                </p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <h3>💼 Agente de Ventas</h3>
+                    <p>
+                        Califica leads automáticamente, programa reuniones, hace seguimientos 
+                        personalizados y actualiza tu CRM en tiempo real. Todo mientras duermes.
+                    </p>
+                    <div class="use-case-results">
+                        <div class="result">
+                            <div class="result-value">+127%</div>
+                            <div class="result-label">Leads Calificados</div>
+                        </div>
+                        <div class="result">
+                            <div class="result-value">-68%</div>
+                            <div class="result-label">Tiempo Manual</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <h3>🎧 Agente de Soporte</h3>
+                    <p>
+                        Resuelve tickets automáticamente, busca información en tu base de 
+                        conocimiento y escala solo los casos complejos a humanos.
+                    </p>
+                    <div class="use-case-results">
+                        <div class="result">
+                            <div class="result-value">85%</div>
+                            <div class="result-label">Tickets Resueltos</div>
+                        </div>
+                        <div class="result">
+                            <div class="result-value">3 min</div>
+                            <div class="result-label">Tiempo Respuesta</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <h3>📈 Agente de Marketing</h3>
+                    <p>
+                        Segmenta audiencias, personaliza mensajes, ejecuta campañas multi-canal 
+                        y optimiza basado en resultados en tiempo real.
+                    </p>
+                    <div class="use-case-results">
+                        <div class="result">
+                            <div class="result-value">+215%</div>
+                            <div class="result-label">Engagement</div>
+                        </div>
+                        <div class="result">
+                            <div class="result-value">$12K</div>
+                            <div class="result-label">Ahorro/Mes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <h3>🏢 Agente de Operaciones</h3>
+                    <p>
+                        Automatiza procesos internos, coordina entre departamentos, gestiona 
+                        inventarios y genera reportes automáticamente.
+                    </p>
+                    <div class="use-case-results">
+                        <div class="result">
+                            <div class="result-value">40hrs</div>
+                            <div class="result-label">Ahorradas/Semana</div>
+                        </div>
+                        <div class="result">
+                            <div class="result-value">-92%</div>
+                            <div class="result-label">Errores Manuales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section id="testimonios" class="social-proof">
+        <div class="social-proof-container">
+            <div class="section-header">
+                <span class="section-badge">Testimonios</span>
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>
+                    Empresas de todos los tamaños están transformando sus operaciones con Agentum.
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Agentum cambió completamente nuestra operación de ventas. Nuestro agente 
+                        califica 200 leads diarios y agenda 40 reuniones por semana. Es como tener 
+                        3 SDRs trabajando 24/7."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>María Contreras</h4>
+                            <p>VP Ventas, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "La diferencia con otros chatbots es abismal. Nuestro agente de soporte 
+                        no solo responde, ejecuta acciones reales: busca en la base de datos, 
+                        crea tickets, actualiza pedidos. Impresionante."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>Javier Rodríguez</h4>
+                            <p>Director IT, RetailMax</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Implementamos Agentum en 2 semanas y en el primer mes recuperamos la 
+                        inversión. La facilidad para crear agentes sin código es perfecta para 
+                        nuestro equipo no técnico."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">LM</div>
+                        <div class="author-info">
+                            <h4>Laura Martínez</h4>
+                            <p>CEO, StartupHub</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="demo" class="cta-section">
+        <div class="cta-container">
+            <h2>Descubre el Poder de los Agentes Inteligentes</h2>
+            <p>
+                Agenda una demostración personalizada y descubre cómo los colaboradores digitales 
+                pueden transformar tu negocio. Nuestro equipo te mostrará casos específicos para tu industria.
+            </p>
+            <form class="cta-form" id="demoForm">
+                <input 
+                    type="email" 
+                    class="cta-input" 
+                    placeholder="tu@empresa.com" 
+                    required
+                    name="email"
+                    id="emailInput"
+                >
+                <button type="submit" class="btn btn-white btn-large">
+                    Solicitar Demostración
+                </button>
+            </form>
+            <p class="cta-note">
+                ✓ Demo personalizada  ✓ Sin compromiso  ✓ Atención inmediata
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Agentum</h3>
+                    <p style="font-style: italic; color: var(--color-primary); margin-bottom: 0.75rem; font-weight: 500;">
+                        Tu empresa, Tu agente, Tu manera
+                    </p>
+                    <p>
+                        La plataforma líder para crear colaboradores digitales inteligentes 
+                        que transforman tu negocio. No chatbots, verdaderos agentes de IA.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#casos-uso">Casos de Uso</a></li>
+                        <li><a href="javascript:void(0)">Precios</a></li>
+                        <li><a href="javascript:void(0)">Documentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)">Sobre Nosotros</a></li>
+                        <li><a href="javascript:void(0)">Blog</a></li>
+                        <li><a href="javascript:void(0)">Carreras</a></li>
+                        <li><a href="javascript:void(0)">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)">Privacidad</a></li>
+                        <li><a href="javascript:void(0)">Términos</a></li>
+                        <li><a href="javascript:void(0)">Seguridad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Agentum. Todos los derechos reservados. Creando el futuro del trabajo inteligente.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Form submission - Demo request
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            
+            // Send to Formspree
+            sendLeadToBackend(email);
+            
+            // Show success message
+            const form = this;
+            const container = form.parentElement;
+            
+            container.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">¡Solicitud Recibida!</h3>
+                    <p style="font-size: 1.125rem; opacity: 0.9;">
+                        Gracias por tu interés. Nuestro equipo se pondrá en contacto contigo 
+                        en menos de 24 horas para agendar tu demostración personalizada.
+                    </p>
+                    <p style="margin-top: 1.5rem; font-size: 0.875rem; opacity: 0.8;">
+                        Email de contacto: ${email}
+                    </p>
+                </div>
+            `;
+        });
+
+        // Send lead to backend
+        function sendLeadToBackend(email) {
+            // Enviar lead a Formspree
+            fetch('https://formspree.io/f/xjkazbod', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    referrer: document.referrer || 'direct',
+                    userAgent: navigator.userAgent,
+                    _subject: 'Nuevo Lead - Agentum Landing'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ Lead enviado a Formspree correctamente:', data);
+            })
+            .catch(error => {
+                console.error('⚠️ Error al enviar a Formspree:', error);
+            });
+        }
+
+    </script>
+</body>
+</html>
+

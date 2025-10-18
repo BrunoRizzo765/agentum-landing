@@ -1,0 +1,17 @@
+# Leads locales (no commitear si guardas en archivo)
+leads.csv
+leads_*.csv
+
+# Node modules si agregas build tools
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
